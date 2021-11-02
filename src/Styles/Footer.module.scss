@@ -1,0 +1,21 @@
+.footer {
+  height: fit-content;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  .logoDiv {
+    @extend .footer;
+    padding: 0;
+  }
+  .socialsDiv {
+    a {
+      padding: 0 10px
+    }
+  }
+  .contacts {
+    @extend .footer;
+    flex-direction: column;
+  }  
+}
