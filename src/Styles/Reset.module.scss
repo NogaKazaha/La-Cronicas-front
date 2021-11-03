@@ -1,4 +1,4 @@
-.login {
+.reset {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -7,13 +7,13 @@
   }
   .content {
     margin-top: 100px;
-    @extend .login;
+    @extend .reset;
     flex-direction: row;
     justify-content: center;
     .inputs {
       align-items: center;
       margin-right: 40px;
-      @extend .login;
+      @extend .reset;
       input {
         height: 40px;
         width: 600px;

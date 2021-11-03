@@ -9,6 +9,9 @@ import { Manage } from '../../Items/JSX/ManageTime'
 function WelcomePage() {
   return (
     <div className={style.welcome}>
+      <Helmet>
+        <title>Welcome &#8739; La Cronicas</title>
+      </Helmet>
       <Header />
         <div className={style.content}>
           <h1>Manage your life easier with La Cronicas</h1>
