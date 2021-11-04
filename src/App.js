@@ -5,6 +5,10 @@ import Login from './Modules/Pages/Login/Login'
 import Register from './Modules/Pages/Register/Register'
 import ResetPassword from './Modules/Pages/ResetPass/ResetPass';
 import ResetPasswordToken from './Modules/Pages/ResetPass/ResetPassToken';
+import Calendars from './Modules/Pages/Calendars/Calendars';
+import Settings from './Modules/Pages/Settings/UserAccount';
+import Public from './Modules/Pages/Public/Public';
+import Shared from './Modules/Pages/Calendars/Shared';
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +18,10 @@ function App() {
           <Route path="/sign_up" exact component={ Register }/>
           <Route path="/reset_pass" exact component={ ResetPassword }/>
           <Route path="/reset_pass/:token" exact component={ ResetPasswordToken }/>
+          <Route path="/calendars" exact component={ Calendars }/>
+          <Route path="/me" exact component={ Settings }/>
+          <Route path="/account" exact component={ Public }/>
+          <Route path="/shared" exact component={ Shared }/>
         </Switch>
     </BrowserRouter>
   );
