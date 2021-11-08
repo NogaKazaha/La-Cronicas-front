@@ -8,26 +8,26 @@ function Shared() {
   return (
     <div className={style.calendars}>
       <Helmet>
-        <title>Calendars &#8739; La Cronicas</title>
+        <title>Shared calendars &#8739; La Cronicas</title>
       </Helmet>
       <CalendarsHeader />
-      <h1>Your calendars</h1>
+      <h1>Shared calendars</h1>
       <div className={style.outerCalendars}>
         <div className={style.allCalendars}>
-          <div className={style.addButton}>
-            <button>Add new calendar</button>
-          </div>
           <div className={style.calendarsList}>
               <div className={style.calendar}>
-                <h1>My calendar</h1>
+                <h1>Shared calendar</h1>
                 <div className={style.info}>
                   <span>Events: </span>
                   <span>Holidays: </span>
                   <span>Created</span>
                 </div>
                 <div>
-                  <Link to='/calender/1'>
+                  <Link to='/calendars/1'>
                     Open calendar
+                  </Link>
+                  <Link to='/calendars/edit/1'>
+                    Edit
                   </Link>
                 </div>
               </div>   

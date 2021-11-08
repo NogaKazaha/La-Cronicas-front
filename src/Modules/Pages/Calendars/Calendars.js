@@ -15,7 +15,9 @@ function Calendars() {
       <div className={style.outerCalendars}>
         <div className={style.allCalendars}>
           <div className={style.addButton}>
-            <button>Add new calendar</button>
+            <Link to='/calendars/create'>
+              Create new calendar
+            </Link>
           </div>
           <div className={style.calendarsList}>
               <div className={style.calendar}>
@@ -26,8 +28,14 @@ function Calendars() {
                   <span>Created</span>
                 </div>
                 <div>
-                  <Link to='/calender/1'>
+                  <Link to='/calendars/1'>
                     Open calendar
+                  </Link>
+                  <Link to='/calendars/edit/1'>
+                    Edit
+                  </Link>
+                  <Link to='/calendars/share/1'>
+                    Share
                   </Link>
                 </div>
               </div>   
