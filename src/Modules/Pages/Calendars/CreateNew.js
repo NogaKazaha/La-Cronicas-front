@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
-import style  from '../../../Styles/EditCalendar.module.scss'
+import style  from '../../../Styles/CreateCalendar.module.scss'
 import CalendarsHeader from '../../Header/CalendarsHeader';
 function CreateNewCalendar() {
   return (

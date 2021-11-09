@@ -13,6 +13,8 @@ import EditCalendar from './Modules/Pages/Calendars/Edit';
 import ShareCalendar from './Modules/Pages/Calendars/Share';
 import CreateNewCalendar from './Modules/Pages/Calendars/CreateNew';
 import OpenedCalendar from './Modules/Pages/Calendars/Calendar';
+import CreateNewEvent from './Modules/Pages/Events/CreateNewEvent';
+import EditEvent from './Modules/Pages/Events/EditEvent';
 function App() {
   return (
     <BrowserRouter>
@@ -23,10 +25,12 @@ function App() {
           <Route path="/reset_pass" exact component={ ResetPassword }/>
           <Route path="/reset_pass/:token" exact component={ ResetPasswordToken }/>
           <Route path="/calendars" exact component={ Calendars }/>
+          <Route path="/calendars/create" exact component={ CreateNewCalendar }/>
           <Route path="/calendars/:id" exact component={ OpenedCalendar }/>
           <Route path="/calendars/edit/:id" exact component={ EditCalendar }/>
           <Route path="/calendars/share/:id" exact component={ ShareCalendar }/>
-          <Route path="/calendars/create" exact component={ CreateNewCalendar }/>
+          <Route path="/events/create" exact component={ CreateNewEvent }/>
+          <Route path="/events/edit/:id" exact component={ EditEvent }/>
           <Route path="/me" exact component={ Settings }/>
           <Route path="/account" exact component={ Public }/>
           <Route path="/shared" exact component={ Shared }/>

@@ -6,7 +6,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import style  from '../../../Styles/Calendar.module.scss'
 import CalendarsHeader from '../../Header/CalendarsHeader';
-import '../../../../node_modules/react-big-calendar/lib/css/react-big-calendar.css';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 const localizer = momentLocalizer(moment)
 function OpenedCalendar() {
   return (
@@ -31,12 +31,16 @@ function OpenedCalendar() {
             <div className={style.event}>
               <div className={style.info}>
                 <span>Event</span>
+                <span>Type</span>
                 <span>Time</span>
-                <Link to='/events/1'>
-                  Open
+                <Link to='/events/edit/1'>
+                  Edit
                 </Link>
               </div>
             </div>
+            <Link to='/events/create'>
+              Create new event
+            </Link>
           </div>
         </div>
       </div>
