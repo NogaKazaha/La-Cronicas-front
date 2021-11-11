@@ -15,6 +15,7 @@ import CreateNewCalendar from './Modules/Pages/Calendars/CreateNew';
 import OpenedCalendar from './Modules/Pages/Calendars/Calendar';
 import CreateNewEvent from './Modules/Pages/Events/CreateNewEvent';
 import EditEvent from './Modules/Pages/Events/EditEvent';
+import Cookies from 'js-cookie';
 function App() {
   return (
     <BrowserRouter>

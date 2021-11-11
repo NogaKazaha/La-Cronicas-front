@@ -1,11 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import toast, { Toaster } from "react-hot-toast"
+import axios from "axios"
+import Cookies from 'js-cookie';
 import Header from '../../Header/Header'
 import Footer from '../../Footer/Footer';
 import style  from '../../../Styles/Reset.module.scss'
 import { ResetSVG } from '../../../Items/JSX/Reset'
 function ResetPasswordToken() {
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+  if(Cookies.get('login') == 'true') {
+    history.push('/calendars')
+  }
+  const handleChange = (e) => {
+		switch (e.target.name) {
+			case "password":
+				setPassword(e.target.value)
+				break
+		}
+	}
+  const handleClick = () => {
+    const api = {
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+        Authorization: 'Bearer' + Cookies.get('token'),
+			},
+			data: {
+				password: password,
+			},
+			url: `http://127.0.0.1:8000/api/auth/reset_password/${Cookies.get('reset_token')}`,
+		}
+    const login = axios.post(api.url, api.data, {
+			headers: api.headers,
+		})
+    const promise = toast.promise(login, {
+			loading: "Sending email in process",
+			success: (response) => {
+        Cookies.remove('reset_token')
+        return response.data.message
+			},
+			error: (error) => {
+				return error.response.data.message
+			},
+		})   
+  }
   return (
     <div className={style.reset}>
       <Helmet>
@@ -15,12 +56,31 @@ function ResetPasswordToken() {
         <h1>Prepare new password and input it</h1>
         <div className={style.content}>
           <div className={style.inputs}>
-            <input type='password' placeholder='Enter new password'></input>
-            <button>Reset</button>
+            <input 
+              type='password' 
+              placeholder='Enter new password'
+              name='password'
+              value={password}
+              onChange={handleChange}
+              required
+            />
+            <button onClick={(e) => handleClick(e.preventDefault())}>Reset</button>
+            <span>Back to login? <Link to='/sign_in'>Click!</Link></span>
           </div>
           <div className={style.svg}>
             <ResetSVG />
           </div>
+          <Toaster
+            position='bottom-center'
+            toastOptions={{
+              style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },
+              duration: 4000,
+            }}
+          />
         </div>
       <Footer />
     </div>

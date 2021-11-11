@@ -1,12 +1,16 @@
 import React from 'react';
 import { Helmet } from 'react-helmet'
 import Cookies from 'js-cookie';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer';
 import style from '../../Styles/Welcome.module.scss'
 import { Manage } from '../../Items/JSX/ManageTime'
 function WelcomePage() {
+  const history = useHistory();
+  if(Cookies.get('login') == 'true') {
+    history.push('/calendars')
+  }
   return (
     <div className={style.welcome}>
       <Helmet>
