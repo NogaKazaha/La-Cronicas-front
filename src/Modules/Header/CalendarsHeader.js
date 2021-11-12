@@ -17,14 +17,15 @@ function CalendarsHeader() {
 			},
 			url: `http://127.0.0.1:8000/api/auth/logout`,
 		}
-    const login = axios.post(api.url, null, {
+    const logout = axios.post(api.url, null, {
 			headers: api.headers,
 		})
-    const promise = toast.promise(login, {
+    const promise = toast.promise(logout, {
 			loading: "Logging out process",
 			success: () => {
         Cookies.remove('login')
         Cookies.remove('token')
+        Cookies.remove('user_id')
         history.push('/')
 			},
 			error: (error) => {

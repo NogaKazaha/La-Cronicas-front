@@ -16,19 +16,6 @@ function Register() {
   if(Cookies.get('login') == 'true') {
     history.push('/calendars')
   }
-  const handleChange = (e) => {
-		switch (e.target.name) {
-      case "username":
-				setUsername(e.target.value)
-				break
-			case "email":
-				setEmail(e.target.value)
-				break
-			case "password":
-				setPassword(e.target.value)
-				break
-		}
-	}
   const handleClick = () => {
     const api = {
 			headers: {
@@ -42,10 +29,10 @@ function Register() {
 			},
 			url: `http://127.0.0.1:8000/api/auth/register`,
 		}
-    const login = axios.post(api.url, api.data, {
+    const register = axios.post(api.url, api.data, {
 			headers: api.headers,
 		})
-    const promise = toast.promise(login, {
+    const promise = toast.promise(register, {
 			loading: "Registration in process",
 			success: (response) => {
         return response.data.message
@@ -69,7 +56,7 @@ function Register() {
               placeholder='Enter your username'
               name='username'
               value={username}
-              onChange={handleChange}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
             <input
@@ -77,7 +64,7 @@ function Register() {
               placeholder='Enter your email' 
               name='email'
               value={email}
-              onChange={handleChange}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <input 
@@ -85,7 +72,7 @@ function Register() {
               placeholder='Enter your password'
               name='password'
               value={password}
-              onChange={handleChange}
+              onChange={(e) => setPassword(e.target.value)}
               required
               />
             <button onClick={(e) => handleClick(e.preventDefault())}>Sign Up</button>

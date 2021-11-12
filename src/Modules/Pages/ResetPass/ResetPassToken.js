@@ -14,13 +14,6 @@ function ResetPasswordToken() {
   if(Cookies.get('login') == 'true') {
     history.push('/calendars')
   }
-  const handleChange = (e) => {
-		switch (e.target.name) {
-			case "password":
-				setPassword(e.target.value)
-				break
-		}
-	}
   const handleClick = () => {
     const api = {
 			headers: {
@@ -33,10 +26,10 @@ function ResetPasswordToken() {
 			},
 			url: `http://127.0.0.1:8000/api/auth/reset_password/${Cookies.get('reset_token')}`,
 		}
-    const login = axios.post(api.url, api.data, {
+    const confirm = axios.post(api.url, api.data, {
 			headers: api.headers,
 		})
-    const promise = toast.promise(login, {
+    const promise = toast.promise(confirm, {
 			loading: "Sending email in process",
 			success: (response) => {
         Cookies.remove('reset_token')
@@ -61,7 +54,7 @@ function ResetPasswordToken() {
               placeholder='Enter new password'
               name='password'
               value={password}
-              onChange={handleChange}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
             <button onClick={(e) => handleClick(e.preventDefault())}>Reset</button>

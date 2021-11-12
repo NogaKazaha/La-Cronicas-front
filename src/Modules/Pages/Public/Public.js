@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import toast, { Toaster } from "react-hot-toast"
+import axios from "axios"
+import Cookies from 'js-cookie';
 import style  from '../../../Styles/Public.module.scss'
 import CalendarsHeader from '../../Header/CalendarsHeader';
 function Public() {
+  const [user, setUser] = useState([])
+  const history = useHistory()
+  if(Cookies.get('login') == 'false' || !Cookies.get('login')) {
+    history.push('/')
+  }
+  useEffect(() => {
+    const api = {
+			headers: {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+			url: `http://127.0.0.1:8000/api/users/show/${Cookies.get('user_id')}`,
+		}
+    axios.get(api.url, api.data, {
+			headers: api.headers,
+		})
+    .then((response) => setUser(response.data))
+  },[])
   return (
     <div>
       <Helmet>
@@ -13,9 +34,9 @@ function Public() {
         <h1>Here you can check your public information</h1>
         <div className={style.outerinfo}>
           <div className={style.info}>
-            <span>Username: NogaKazaha</span>
-            <span>Email: nogakazahawork@gmail.com</span>
-            <span>ShareId: qweqweqw</span>
+            <span>Username: {user.username}</span>
+            <span>Email: {user.email}</span>
+            <span>ShareId: {user.shareId}</span>
           </div>
         </div>
         <span>Want to chage your info? <Link to='/me'>Go to settings</Link></span>

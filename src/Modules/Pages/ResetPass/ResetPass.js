@@ -14,13 +14,6 @@ function ResetPassword() {
   if(Cookies.get('login') == 'true') {
     history.push('/calendars')
   }
-  const handleChange = (e) => {
-		switch (e.target.name) {
-			case "email":
-				setEmail(e.target.value)
-				break
-		}
-	}
   const handleClick = () => {
     const api = {
 			headers: {
@@ -33,10 +26,10 @@ function ResetPassword() {
 			},
 			url: `http://127.0.0.1:8000/api/auth/reset_password`,
 		}
-    const login = axios.post(api.url, api.data, {
+    const reset = axios.post(api.url, api.data, {
 			headers: api.headers,
 		})
-    const promise = toast.promise(login, {
+    const promise = toast.promise(reset, {
 			loading: "Sending email in process",
 			success: (response) => {
         Cookies.set('reset_token', response.data.reset_token)
@@ -61,7 +54,7 @@ function ResetPassword() {
               placeholder='Enter your email'
               name='email'
               value={email}
-              onChange={handleChange}
+              onChange={(e) => setEmail(e.target.value)}
               required 
             />
             <button onClick={(e) => handleClick(e.preventDefault())}>Send email</button>

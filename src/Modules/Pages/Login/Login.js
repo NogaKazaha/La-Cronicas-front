@@ -15,16 +15,6 @@ function Login() {
   if(Cookies.get('login') == 'true') {
     history.push('/calendars')
   }
-  const handleChange = (e) => {
-		switch (e.target.name) {
-			case "email":
-				setEmail(e.target.value)
-				break
-			case "password":
-				setPassword(e.target.value)
-				break
-		}
-	}
   const handleClick = () => {
     const api = {
 			headers: {
@@ -46,6 +36,8 @@ function Login() {
         history.push('/calendars')
         Cookies.set('login', true)
         Cookies.set('token', response.data.token)
+        Cookies.set('user_id', response.data.user_id)
+        return response.data.message
 			},
 			error: (error) => {
 				return error.response.data.message
@@ -67,7 +59,7 @@ function Login() {
               placeholder='Enter your email' 
               name='email'
               value={email}
-              onChange={handleChange}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <input 
@@ -75,7 +67,7 @@ function Login() {
               placeholder='Enter your password' 
               name='password'
               value={password}
-              onChange={handleChange}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
             <button onClick={(e) => handleClick(e.preventDefault())}>Sign In</button>
