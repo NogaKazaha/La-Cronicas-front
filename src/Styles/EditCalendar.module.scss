@@ -25,9 +25,5 @@ div {
     button:hover {
       background-color: darken($color: rgb(241, 241, 241), $amount: 5);
     }
-    button:last-child:hover {
-      background-color: rgb(255, 115, 115);
-      color: white;
-    }
   }
 }

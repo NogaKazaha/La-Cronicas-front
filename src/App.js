@@ -15,7 +15,7 @@ import CreateNewCalendar from './Modules/Pages/Calendars/CreateNew';
 import OpenedCalendar from './Modules/Pages/Calendars/Calendar';
 import CreateNewEvent from './Modules/Pages/Events/CreateNewEvent';
 import EditEvent from './Modules/Pages/Events/EditEvent';
-import Cookies from 'js-cookie';
+import EditSharedCalendar from './Modules/Pages/Calendars/EditShared';
 function App() {
   return (
     <BrowserRouter>
@@ -29,6 +29,7 @@ function App() {
           <Route path="/calendars/create" exact component={ CreateNewCalendar }/>
           <Route path="/calendars/:id" exact component={ OpenedCalendar }/>
           <Route path="/calendars/edit/:id" exact component={ EditCalendar }/>
+          <Route path="/calendars/edit/shared/:id"  component={ EditSharedCalendar }/>
           <Route path="/calendars/share/:id" exact component={ ShareCalendar }/>
           <Route path="/events/create" exact component={ CreateNewEvent }/>
           <Route path="/events/edit/:id" exact component={ EditEvent }/>

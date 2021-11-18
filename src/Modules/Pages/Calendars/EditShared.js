@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 import style  from '../../../Styles/EditCalendar.module.scss'
 import CalendarsHeader from '../../Header/CalendarsHeader';
 import { useParams } from 'react-router-dom';
-function EditCalendar() {
+function EditSharedCalendar() {
   const params = useParams()
   const [title, setTitle] = useState("")
   const history = useHistory()
@@ -101,11 +101,11 @@ function EditCalendar() {
           />
           <button onClick={(e) => handleClick(e.preventDefault())}>Submit</button>
           {
-            calendars.status == 'removable' && 
+            calendars.status == false && 
               <button onClick={(e) => handleDel(e.preventDefault())}>Delete this calendar</button>
           }
         </div>
     </div>
   );
 }
-export default EditCalendar;
+export default EditSharedCalendar;
