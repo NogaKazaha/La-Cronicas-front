@@ -31,7 +31,7 @@ function App() {
           <Route path="/calendars/edit/:id" exact component={ EditCalendar }/>
           <Route path="/calendars/edit/shared/:id"  component={ EditSharedCalendar }/>
           <Route path="/calendars/share/:id" exact component={ ShareCalendar }/>
-          <Route path="/events/create" exact component={ CreateNewEvent }/>
+          <Route path="/events/create/:id" exact component={ CreateNewEvent }/>
           <Route path="/events/edit/:id" exact component={ EditEvent }/>
           <Route path="/me" exact component={ Settings }/>
           <Route path="/account" exact component={ Public }/>

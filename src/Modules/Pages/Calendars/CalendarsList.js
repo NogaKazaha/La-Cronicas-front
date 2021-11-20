@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import Moment from 'react-moment';
 const CalendarList = ({ calendars }) => {
 	return calendars.map((calendar) => {
-    console.log(new Date(calendar.created_at))
 		return (
       <div className={style.calendar}>
         <h1>{calendar.title}</h1>
